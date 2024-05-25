@@ -17,7 +17,9 @@ return new class extends Migration
             $table->id();
             $table->string('nama');
             $table->string('no_hp')->nullable();
+            $table->integer('resort')->nullable();
             $table->string('email')->unique();
+            $table->string('status')->default('tidak aktif');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();

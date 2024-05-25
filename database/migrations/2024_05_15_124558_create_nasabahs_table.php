@@ -20,14 +20,17 @@ return new class extends Migration
             $table->string('titipan')->nullable();
             $table->string('desa')->nullable();
             $table->string('koordinat')->nullable();
+            $table->string('koordinat_titipan')->nullable();
             $table->string('keterangan')->nullable();
             $table->string('kelompok')->nullable();
             $table->string('foto_selfy')->nullable();
             $table->string('foto_ktp')->nullable();
             $table->string('foto_rumah')->nullable();
             $table->float('rating')->default(0);
-            $table->string('resort')->default(1);
-            $table->string('user_id');
+            $table->integer('resort')->default(1);
+            $table->integer('checked')->default(0);
+            $table->string('status')->default('aktif');
+            $table->integer('user_id')->default(1);
             $table->timestamps();
         });
     }

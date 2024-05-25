@@ -13,6 +13,7 @@ class Nasabah extends Model
         'nama',
         'no_hp',
         'titipan',
+        'koordinat_titipan',
         'desa',
         'koordinat',
         'keterangan',
@@ -22,6 +23,8 @@ class Nasabah extends Model
         'foto_rumah',
         'rating',
         'resort',
+        'checked',
+        'status',
         'user_id',
     ];
 }
