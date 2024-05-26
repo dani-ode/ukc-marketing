@@ -439,7 +439,7 @@ class NasabahController extends Controller
             $clean_day = str_replace("'", "", $day); // Remove the apostrophe
             $clean_day = strtolower($clean_day); // Convert to lowercase
 
-            $semua_nasabah = Nasabah::orderBy('desa', 'ASC')->where('resort', Auth::user()->resort)->where('kelompok', $clean_day)->get();
+            $semua_nasabah = Nasabah::orderBy('desa', 'ASC')->where('resort', 3)->where('kelompok', $clean_day)->get();
             $no = 1; // Untuk penomoran tabel, di awal set dengan 1
             $row = 4; // Set baris pertama untuk isi tabel adalah baris ke 4
             foreach ($semua_nasabah as $nasabah) {
@@ -542,7 +542,7 @@ class NasabahController extends Controller
 
         // Proses file excel
         header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-        header('Content-Disposition: attachment; filename="Data Nasabah (Resort ' . Auth::user()->resort . ').xlsx"'); // Set nama file excel nya
+        header('Content-Disposition: attachment; filename="Data Nasabah (Resort ' . 3 . ').xlsx"'); // Set nama file excel nya
         header('Cache-Control: max-age=0');
         $writer = new WriterXlsx($spreadsheet);
         $writer->save('php://output');
