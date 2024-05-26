@@ -23,7 +23,7 @@ Route::get('register', [AuthController::class, 'registration'])->name('register-
 Route::post('custom-registration', [AuthController::class, 'customRegistration'])->name('register.custom');
 Route::get('logout', [AuthController::class, 'signOut'])->name('signout');
 
-Route::post('/export-nasabah', [NasabahController::class, 'exportNasabah']);
+Route::get('/export-nasabah', [NasabahController::class, 'exportNasabah']);
 // Nasabah
 Route::group(
     ['middleware' => 'auth'],
