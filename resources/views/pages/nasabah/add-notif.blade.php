@@ -14,7 +14,7 @@
                     <hr>
                     <p class="mt-2">Keterangan : {{ $nasabah->keterangan }}</p>
                     <hr>
-                    ....
+                    ...
                 @else
                     <p class="mt-2">Total Data : {{ $total_data }}</p>
                 @endif

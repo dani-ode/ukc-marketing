@@ -408,8 +408,8 @@ class NasabahController extends Controller
             $sheet->setCellValue('G3', "KOORDINAT TITIPAN"); // Set kolom F3 dengan tulisan "ALAMAT"
             $sheet->setCellValue('H3', "KETERANGAN"); // Set kolom F3 dengan tulisan "ALAMAT"
             $sheet->setCellValue('I3', "FOTO SELFY"); // Set kolom F3 dengan tulisan "ALAMAT"
-            $sheet->setCellValue('J3', "FOTO KTP"); // Set kolom F3 dengan tulisan "ALAMAT"
-            $sheet->setCellValue('K3', "FOTO RUMAH"); // Set kolom F3 dengan tulisan "ALAMAT"
+            $sheet->setCellValue('J3', "FOTO RUMAH"); // Set kolom F3 dengan tulisan "ALAMAT"
+            $sheet->setCellValue('K3', "FOTO KTP"); // Set kolom F3 dengan tulisan "ALAMAT"
             $sheet->setCellValue('L3', "RATING"); // Set kolom F3 dengan tulisan "ALAMAT"
             $sheet->setCellValue('M3', "RESORT"); // Set kolom F3 dengan tulisan "ALAMAT"
             $sheet->setCellValue('N3', "STATUS"); // Set kolom F3 dengan tulisan "ALAMAT"
@@ -453,12 +453,41 @@ class NasabahController extends Controller
                 $sheet->setCellValue('F' . $row, $nasabah->koordinat);
                 $sheet->setCellValue('G' . $row, $nasabah->koordinat_titipan);
                 $sheet->setCellValue('H' . $row, $nasabah->keterangan);
-                $sheet->setCellValue('I' . $row, $nasabah->foto_selfy);
-                $sheet->setCellValue('J' . $row, $nasabah->foto_rumah);
-                $sheet->setCellValue('K' . $row, $nasabah->foto_ktp);
+                $sheet->setCellValue('I' . $row, url('') . '/storage' . '/' . $nasabah->foto_selfy);
+                $sheet->setCellValue('J' . $row, url('') . '/storage' . '/' . $nasabah->foto_rumah);
+                $sheet->setCellValue('K' . $row, url('') . '/storage' . '/' . $nasabah->foto_ktp);
                 $sheet->setCellValue('L' . $row, $nasabah->rating);
                 $sheet->setCellValue('M' . $row, $nasabah->resort);
                 $sheet->setCellValue('N' . $row, $nasabah->status);
+
+                // set link
+                $sheet->getCell('B' . $row)->getHyperlink()->setUrl(url('') . '/detail-nasabah/' . $nasabah->id);
+
+                if ($nasabah->koordinat) {
+                    $sheet->getCell('F' . $row)->getHyperlink()->setUrl($nasabah->koordinat);
+                }
+                if ($nasabah->koordinat_titipan) {
+                    $sheet->getCell('G' . $row)->getHyperlink()->setUrl($nasabah->koordinat_titipan);
+                }
+                if ($nasabah->foto_selfy) {
+                    $sheet->getCell('I' . $row)->getHyperlink()->setUrl(url('') . '/storage' . '/' . $nasabah->foto_selfy);
+                }
+                if ($nasabah->foto_rumah) {
+                    $sheet->getCell('J' . $row)->getHyperlink()->setUrl(url('') . '/storage' . '/' . $nasabah->foto_rumah);
+                }
+                if ($nasabah->foto_ktp) {
+                    $sheet->getCell('K' . $row)->getHyperlink()->setUrl(url('') . '/storage' . '/' . $nasabah->foto_ktp);
+                }
+
+                // change link value text color to blue
+
+                $sheet->getStyle('B' . $row)->getFont()->getColor()->setARGB('0000FF');
+                $sheet->getStyle('F' . $row)->getFont()->getColor()->setARGB('0000FF');
+                $sheet->getStyle('G' . $row)->getFont()->getColor()->setARGB('0000FF');
+                $sheet->getStyle('I' . $row)->getFont()->getColor()->setARGB('0000FF');
+                $sheet->getStyle('J' . $row)->getFont()->getColor()->setARGB('0000FF');
+                $sheet->getStyle('K' . $row)->getFont()->getColor()->setARGB('0000FF');
+
 
                 // Apply style row yang telah kita buat tadi ke masing-masing baris (isi tabel)
                 $sheet->getStyle('A' . $row)->applyFromArray($style_row);

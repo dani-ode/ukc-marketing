@@ -139,7 +139,7 @@ class UserController extends Controller
             'user' => $user,
         ];
 
-        return view('pages.nasabah.add-notif', $data);
+        return view('pages.user.add-notif', $data);
     }
 
     /**

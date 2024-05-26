@@ -46,7 +46,8 @@
                     <div class="input-group mb-3">
                         <div class="input-group flex-nowrap">
                             <input type="text" class="form-control" placeholder="Desa" name="desa"
-                                aria-describedby="addon-wrapping" value="{{ $nasabah->desa }}">
+                                aria-describedby="addon-wrapping" value="{{ $nasabah->desa }}"
+                                {{ $nasabah->resort == $user->resort ? '' : 'disabled' }}>
                         </div>
                     </div>
 
@@ -57,7 +58,8 @@
                                 <div class="input-group flex-nowrap">
                                     <input type="text" class="form-control" placeholder="Titik Koordinat"
                                         name="koordinat" aria-label="Alamat" aria-describedby="addon-wrapping"
-                                        value="{{ $nasabah->koordinat }}">
+                                        value="{{ $nasabah->koordinat }}"
+                                        {{ $nasabah->resort == $user->resort ? '' : 'disabled' }}>
                                 </div>
                             </div>
                             <div class="col-2 m-0 p-0 text-end">
@@ -72,7 +74,8 @@
                         @php
                             $days = ['senin', 'selasa', 'rabu', 'kamis', 'jumat'];
                         @endphp
-                        <select class="form-select" aria-label="Default select example" name="kelompok">
+                        <select class="form-select" aria-label="Default select example" name="kelompok"
+                            {{ $nasabah->resort == $user->resort ? '' : 'disabled' }}>
                             @foreach ($days as $day)
                                 <option value="{{ $day }}" {{ $day == $nasabah->kelompok ? 'selected' : '' }}>
                                     {{ $day }}</option>
@@ -84,7 +87,8 @@
                     <div class="input-group mb-3">
                         <div class="input-group flex-nowrap">
                             <input id="input-titipan" type="text" class="form-control" placeholder="Titipan"
-                                name="titipan" value="{{ $nasabah->titipan }}">
+                                name="titipan" value="{{ $nasabah->titipan }}"
+                                {{ $nasabah->resort == $user->resort ? '' : 'disabled' }}>
                         </div>
                     </div>
 
@@ -94,7 +98,8 @@
                                 <div class="input-group flex-nowrap">
                                     <input type="text" class="form-control" placeholder="Titik Koordinat Titipan"
                                         name="koordinat_titipan" aria-label="Alamat" aria-describedby="addon-wrapping"
-                                        value="{{ $nasabah->koordinat_titipan }}">
+                                        value="{{ $nasabah->koordinat_titipan }}"
+                                        {{ $nasabah->resort == $user->resort ? '' : 'disabled' }}>
                                 </div>
                             </div>
                             <div class="col-2 m-0 p-0 text-end">
@@ -104,30 +109,33 @@
                         </div>
                     </div>
 
-                    <span class="label">Foto KTP</span>
-                    <div class="input-group mb-3">
-                        <input name="foto_ktp" type="file" accept="image/*" class="form-control" id="inputGroupFile04"
-                            aria-describedby="inputGroupFileAddon04" aria-label="Upload">
-                    </div>
+                    @if ($nasabah->resort == $user->resort)
+                        <span class="label">Foto KTP</span>
+                        <div class="input-group mb-3">
+                            <input name="foto_ktp" type="file" accept="image/*" class="form-control"
+                                id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+                        </div>
 
 
-                    <span class="label">Foto Selfy</span>
-                    <div class="input-group mb-3">
-                        <input name="foto_selfy" type="file" accept="image/*" class="form-control"
-                            id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
-                    </div>
+                        <span class="label">Foto Selfy</span>
+                        <div class="input-group mb-3">
+                            <input name="foto_selfy" type="file" accept="image/*" class="form-control"
+                                id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+                        </div>
 
-                    <span class="label">Foto Rumah</span>
-                    <div class="input-group mb-3">
-                        <input name="foto_rumah" type="file" accept="image/*" class="form-control"
-                            id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
-                    </div>
+                        <span class="label">Foto Rumah</span>
+                        <div class="input-group mb-3">
+                            <input name="foto_rumah" type="file" accept="image/*" class="form-control"
+                                id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+                        </div>
+                    @endif
 
 
                     <div class="input-group mb-3">
                         <div class="input-group flex-nowrap">
                             <input type="text" class="form-control" placeholder="Keterangan" name="keterangan"
-                                aria-describedby="addon-wrapping" value="{{ $nasabah->keterangan }}">
+                                aria-describedby="addon-wrapping" value="{{ $nasabah->keterangan }}"
+                                {{ $nasabah->resort == $user->resort ? '' : 'disabled' }}>
                         </div>
                     </div>
 
@@ -206,9 +214,12 @@
                 <input type="hidden" name="user_id" value="{{ $user->id }}">
                 <input type="hidden" name="resort" value="{{ $nasabah->resort }}">
 
-                <div class="p-3">
-                    <button type="submit" class="btn btn-success"><i class="bi bi-floppy2"></i> Simpan</button>
-                </div>
+
+                @if ($nasabah->resort == $user->resort)
+                    <div class="p-3">
+                        <button type="submit" class="btn btn-success"><i class="bi bi-floppy2"></i> Simpan</button>
+                    </div>
+                @endif
             </form>
 
             @if ($nasabah->resort == $user->resort && $nasabah->status != 'aktif')

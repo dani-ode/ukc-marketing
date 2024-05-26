@@ -9,7 +9,7 @@
             <div class="card-body">
                 <p class="mt-2">Nama : {{ $user->nama }}</p>
                 <hr>
-                ....
+                ...
                 <br>
                 <div class="text-center">
                     <button onclick="window.history.go(-1); return false;" class="btn btn-success"><i
