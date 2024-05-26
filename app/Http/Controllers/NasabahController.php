@@ -462,31 +462,28 @@ class NasabahController extends Controller
 
                 // set link
                 $sheet->getCell('B' . $row)->getHyperlink()->setUrl(url('') . '/detail-nasabah/' . $nasabah->id);
+                $sheet->getStyle('B' . $row)->getFont()->getColor()->setARGB('0000FF');
 
                 if ($nasabah->koordinat) {
                     $sheet->getCell('F' . $row)->getHyperlink()->setUrl($nasabah->koordinat);
+                    $sheet->getStyle('F' . $row)->getFont()->getColor()->setARGB('0000FF');
                 }
                 if ($nasabah->koordinat_titipan) {
                     $sheet->getCell('G' . $row)->getHyperlink()->setUrl($nasabah->koordinat_titipan);
+                    $sheet->getStyle('G' . $row)->getFont()->getColor()->setARGB('0000FF');
                 }
                 if ($nasabah->foto_selfy) {
                     $sheet->getCell('I' . $row)->getHyperlink()->setUrl(url('') . '/storage' . '/' . $nasabah->foto_selfy);
+                    $sheet->getStyle('I' . $row)->getFont()->getColor()->setARGB('0000FF');
                 }
                 if ($nasabah->foto_rumah) {
                     $sheet->getCell('J' . $row)->getHyperlink()->setUrl(url('') . '/storage' . '/' . $nasabah->foto_rumah);
+                    $sheet->getStyle('J' . $row)->getFont()->getColor()->setARGB('0000FF');
                 }
                 if ($nasabah->foto_ktp) {
                     $sheet->getCell('K' . $row)->getHyperlink()->setUrl(url('') . '/storage' . '/' . $nasabah->foto_ktp);
+                    $sheet->getStyle('K' . $row)->getFont()->getColor()->setARGB('0000FF');
                 }
-
-                // change link value text color to blue
-
-                $sheet->getStyle('B' . $row)->getFont()->getColor()->setARGB('0000FF');
-                $sheet->getStyle('F' . $row)->getFont()->getColor()->setARGB('0000FF');
-                $sheet->getStyle('G' . $row)->getFont()->getColor()->setARGB('0000FF');
-                $sheet->getStyle('I' . $row)->getFont()->getColor()->setARGB('0000FF');
-                $sheet->getStyle('J' . $row)->getFont()->getColor()->setARGB('0000FF');
-                $sheet->getStyle('K' . $row)->getFont()->getColor()->setARGB('0000FF');
 
 
                 // Apply style row yang telah kita buat tadi ke masing-masing baris (isi tabel)
