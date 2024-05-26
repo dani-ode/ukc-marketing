@@ -453,9 +453,9 @@ class NasabahController extends Controller
                 $sheet->setCellValue('F' . $row, $nasabah->koordinat);
                 $sheet->setCellValue('G' . $row, $nasabah->koordinat_titipan);
                 $sheet->setCellValue('H' . $row, $nasabah->keterangan);
-                $sheet->setCellValue('I' . $row, url('') . (($nasabah->foto_selfy) ? '/storage' . '/' . $nasabah->foto_selfy : null));
-                $sheet->setCellValue('J' . $row, url('') . (($nasabah->foto_rumah) ? '/storage' . '/' . $nasabah->foto_rumah : null));
-                $sheet->setCellValue('K' . $row, url('') . (($nasabah->foto_ktp) ? '/storage' . '/' . $nasabah->foto_ktp : null));
+                $sheet->setCellValue('I' . $row, (($nasabah->foto_selfy) ? url('') . '/storage' . '/' . $nasabah->foto_selfy : null));
+                $sheet->setCellValue('J' . $row, (($nasabah->foto_rumah) ? url('') . '/storage' . '/' . $nasabah->foto_rumah : null));
+                $sheet->setCellValue('K' . $row, (($nasabah->foto_ktp) ? url('') . '/storage' . '/' . $nasabah->foto_ktp : null));
                 $sheet->setCellValue('L' . $row, $nasabah->rating);
                 $sheet->setCellValue('M' . $row, $nasabah->resort);
                 $sheet->setCellValue('N' . $row, $nasabah->status);
